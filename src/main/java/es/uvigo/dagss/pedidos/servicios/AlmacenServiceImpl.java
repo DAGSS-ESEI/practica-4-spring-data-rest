@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import es.uvigo.dagss.pedidos.daos.AlmacenDAO;
-import es.uvigo.dagss.pedidos.daos.ArticuloAlmacenDAO;
+import es.uvigo.dagss.pedidos.daos.AlmacenDao;
+import es.uvigo.dagss.pedidos.daos.ArticuloAlmacenDao;
 import es.uvigo.dagss.pedidos.entidades.Almacen;
 import es.uvigo.dagss.pedidos.entidades.Articulo;
 import es.uvigo.dagss.pedidos.entidades.ArticuloAlmacen;
@@ -17,62 +17,62 @@ import es.uvigo.dagss.pedidos.entidades.ArticuloAlmacenId;
 @Service
 public class AlmacenServiceImpl implements AlmacenService {
 	@Autowired
-	private AlmacenDAO almacenDAO;
+	private AlmacenDao almacenDao;
 
 	@Autowired
-	private ArticuloAlmacenDAO articuloAlmacenDAO;
+	private ArticuloAlmacenDao articuloAlmacenDao;
 
 	@Override
 	@Transactional
 	public Almacen crear(Almacen almacen) {
-		return almacenDAO.save(almacen);
+		return almacenDao.save(almacen);
 	}
 
 	@Override
 	@Transactional
 	public Almacen modificar(Almacen almacen) {
-		return almacenDAO.save(almacen);
+		return almacenDao.save(almacen);
 	}
 
 	@Override
 	@Transactional
 	public void eliminar(Almacen almacen) {
-		almacenDAO.delete(almacen);
+		almacenDao.delete(almacen);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public Optional<Almacen> buscarPorId(Long id) {
-		return almacenDAO.findById(id);
+		return almacenDao.findById(id);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Almacen> buscarTodos() {
-		return almacenDAO.findAll();
+		return almacenDao.findAll();
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Almacen> buscarPorNombre(String patron) {
-		return almacenDAO.findByNombreContaining(patron);
+		return almacenDao.findByNombreContaining(patron);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Almacen> buscarPorLocalidad(String localidad) {
-		return almacenDAO.findByDireccionLocalidad(localidad);
+		return almacenDao.findByDireccionLocalidad(localidad);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Almacen> buscarPorArticuloId(Long articuloId) {
-		return almacenDAO.findByArticuloId(articuloId);
+		return almacenDao.findByArticuloId(articuloId);
 	}
 
 	@Override
 	public ArticuloAlmacen crearArticuloAlmacen(ArticuloAlmacen articuloAlmacen) {
-		return articuloAlmacenDAO.save(articuloAlmacen);
+		return articuloAlmacenDao.save(articuloAlmacen);
 	}
 
 	@Override
@@ -84,12 +84,12 @@ public class AlmacenServiceImpl implements AlmacenService {
 	@Override
 	@Transactional
 	public void eliminarArticuloAlmacen(ArticuloAlmacen articuloAlmacen) {
-		articuloAlmacenDAO.delete(articuloAlmacen);
+		articuloAlmacenDao.delete(articuloAlmacen);
 	}
 
 	@Override
 	public void eliminarArticuloAlmacen(Long articuloId, Long almacenId) {
-		Optional<ArticuloAlmacen> optional = articuloAlmacenDAO.findById(new ArticuloAlmacenId(articuloId, almacenId));
+		Optional<ArticuloAlmacen> optional = articuloAlmacenDao.findById(new ArticuloAlmacenId(articuloId, almacenId));
 		if (optional.isPresent()) {
 			ArticuloAlmacen aa = optional.get();
 			this.eliminarArticuloAlmacen(aa);
@@ -99,24 +99,24 @@ public class AlmacenServiceImpl implements AlmacenService {
 	@Override
 	@Transactional(readOnly = true)
 	public Optional<ArticuloAlmacen> buscarArticuloAlmacenPorArticuloIdAlmacenId(Long articuloId, Long almacenId) {
-		return articuloAlmacenDAO.findById(new ArticuloAlmacenId(articuloId, almacenId));
+		return articuloAlmacenDao.findById(new ArticuloAlmacenId(articuloId, almacenId));
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<ArticuloAlmacen> buscarArticulosAlmacenPorAlmacenId(Long almacenId) {
-		return articuloAlmacenDAO.findByAlmacenId(almacenId);
+		return articuloAlmacenDao.findByAlmacenId(almacenId);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<ArticuloAlmacen> buscarArticulosAlmacenPorArticuloId(Long articuloId) {
-		return articuloAlmacenDAO.findByArticuloId(articuloId);
+		return articuloAlmacenDao.findByArticuloId(articuloId);
 	}
 
 	@Override
 	public ArticuloAlmacen modificarArticuloAlmacen(ArticuloAlmacen articuloAlmacen) {
-		return articuloAlmacenDAO.save(articuloAlmacen);
+		return articuloAlmacenDao.save(articuloAlmacen);
 	}
 
 }

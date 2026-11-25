@@ -7,95 +7,95 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import es.uvigo.dagss.pedidos.daos.ArticuloDAO;
-import es.uvigo.dagss.pedidos.daos.FamiliaDAO;
+import es.uvigo.dagss.pedidos.daos.ArticuloDao;
+import es.uvigo.dagss.pedidos.daos.FamiliaDao;
 import es.uvigo.dagss.pedidos.entidades.Articulo;
 import es.uvigo.dagss.pedidos.entidades.Familia;
 
 @Service
 public class ArticuloServiceImpl implements ArticuloService {
 	@Autowired
-	ArticuloDAO articuloDAO;
+	ArticuloDao articuloDao;
 
 	@Autowired
-	FamiliaDAO familiaDAO;
+	FamiliaDao familiaDao;
 
 	@Override
 	@Transactional
 	public Articulo crear(Articulo articulo) {
-		return articuloDAO.save(articulo);
+		return articuloDao.save(articulo);
 	}
 
 	@Override
 	@Transactional
 	public Articulo modificar(Articulo articulo) {
-		return articuloDAO.save(articulo);
+		return articuloDao.save(articulo);
 	}
 
 	@Override
 	@Transactional
 	public void eliminar(Articulo articulo) {
-		articuloDAO.delete(articulo);
+		articuloDao.delete(articulo);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public Optional<Articulo> buscarPorId(Long id) {
-		return articuloDAO.findById(id);
+		return articuloDao.findById(id);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Articulo> buscarTodos() {
-		return articuloDAO.findAll();
+		return articuloDao.findAll();
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Articulo> buscarPorDescripcion(String patron) {
-		return articuloDAO.findByPatronDescripcion(patron);
+		return articuloDao.findByPatronDescripcion(patron);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Articulo> buscarPorFamilia(Long idFamilia) {
-		return articuloDAO.findByFamiliaId(idFamilia);
+		return articuloDao.findByFamiliaId(idFamilia);
 	}
 
 	@Override
 	@Transactional
 	public Familia crearFamilia(Familia familia) {
-		return familiaDAO.save(familia);
+		return familiaDao.save(familia);
 	}
 
 	@Override
 	@Transactional
 	public Familia modificarFamilia(Familia familia) {
-		return familiaDAO.save(familia);
+		return familiaDao.save(familia);
 	}
 
 	@Override
 	@Transactional
 	public void eliminarFamilia(Familia familia) {
-		familiaDAO.delete(familia);
+		familiaDao.delete(familia);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public Optional<Familia> buscarFamiliaPorId(Long id) {
-		return familiaDAO.findById(id);
+		return familiaDao.findById(id);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Familia> buscarFamilias() {
-		return familiaDAO.findAll();
+		return familiaDao.findAll();
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Familia> buscarFamiliasPorDescripcion(String patron) {
-		return familiaDAO.findByPatronDescripcion(patron);
+		return familiaDao.findByPatronDescripcion(patron);
 	}
 
 }

@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import es.uvigo.dagss.pedidos.daos.ClienteDAO;
+import es.uvigo.dagss.pedidos.daos.ClienteDao;
 import es.uvigo.dagss.pedidos.entidades.Cliente;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {
 	@Autowired
-	ClienteDAO dao;
+	ClienteDao dao;
 
 	@Override
 	@Transactional
