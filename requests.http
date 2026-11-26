@@ -1,0 +1,82 @@
+@base = http://localhost:8080/api
+@dni = 11111111A
+
+### Listar artículos
+GET {{base}}/articulos
+
+### Artículo por id
+GET {{base}}/articulos/1
+
+### Artículos de una familia
+GET {{base}}/articulos?familiaId=1
+
+### Artículos por descripción
+GET {{base}}/articulos?descripcion=tubo
+
+### Listar clientes
+GET {{base}}/clientes
+
+### Cliente por DNI
+GET {{base}}/clientes/{{dni}}
+
+### Clientes por nombre
+GET {{base}}/clientes?nombre=Pepe
+
+### Clientes por localidad
+GET {{base}}/clientes?localidad=Ourense
+
+### Listar pedidos
+GET {{base}}/pedidos
+
+### Pedido por id
+GET {{base}}/pedidos/1
+
+### Pedidos de un cliente
+GET {{base}}/pedidos?clienteDNI={{dni}}
+
+### Listar familias
+GET {{base}}/familias
+
+### Listar almacenes
+GET {{base}}/almacenes
+
+### Almacenes por localidad
+GET {{base}}/almacenes?localidad=Santiago
+
+### Almacenes que contienen un artículo
+GET {{base}}/almacenes?articuloId=1
+
+### Artículos de un almacén
+GET {{base}}/almacenes/1/articulos
+
+### Stock de un artículo en un almacén
+GET {{base}}/almacenes/1/articulos/1/stock
+
+### Crear un artículo
+POST {{base}}/articulos
+Content-Type: application/json
+
+{
+  "nombre": "tubo POST",
+  "descripcion": "enviado por POST",
+  "precioUnitario": 123.456,
+  "familia": {
+    "id": 1
+  }
+}
+
+### Crear un cliente
+POST {{base}}/clientes
+Content-Type: application/json
+
+{
+  "DNI": "33333333C",
+  "nombre": "Cliente POST",
+  "direccion": {
+    "domicilio": "calle 9",
+    "localidad": "Vigo",
+    "codigoPostal": "36200",
+    "provincia": "Pontevedra",
+    "telefono": "986000000"
+  }
+}

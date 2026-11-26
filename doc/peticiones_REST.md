@@ -2,6 +2,22 @@
 
 Todas las rutas del API están bajo la base `/api`. Las antiguas rutas de Spring Data REST (`/articuloes`, `/pedidoes`, ...) **no** están disponibles en este proyecto.
 
+## `requests.http` + VS Code REST Client (recomendado)
+
+1. Instala la extensión **REST Client** (`humao.rest-client`) en VS Code:
+   - Desde VS Code: panel **Extensions** (`Ctrl+Shift+X`), busca **REST Client** (autor Huachao Mao) y pulsa **Install**.
+   - Desde la terminal:
+     ```bash
+     code --install-extension humao.rest-client
+     ```
+   - Marketplace: https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+2. Abre [`../requests.http`](../requests.http).
+3. Pulsa **Send Request** sobre la petición que quieras lanzar.
+
+Este método tiene la ventaja de que las peticiones quedan en texto plano, y por tanto son versionables en Git, y además no requiere de cuenta ni de herramientas externas.
+
+![REST Client (VS Code)](vscode.png "REST Client (VS Code)")
+
 ## `curl`
 
 Ejemplos `GET`:
@@ -47,14 +63,8 @@ curl -v --header 'Content-Type: application/json' \
   --request POST http://localhost:8080/api/clientes
 ```
 
-## Extensiones
+## Alternativas
 
-Las siguientes extensiones permiten gestionar colecciones de peticiones y ejecutarlas desde las propias extensiones:
-
-- VS Code: [Thunder Client](https://marketplace.visualstudio.com/items?itemName=rangav.vscode-thunder-client)
-- Firefox: [RESTED](https://addons.mozilla.org/en-US/firefox/addon/rested)
-- Chrome: [Talend API Tester](https://chromewebstore.google.com/detail/talend-api-tester-free-ed/aejoelaoggembcahagimdiliamlcdmfm?pli=1)
-
-Por ejemplo, la petición `POST` anterior se vería de la siguiente manera en Thunder Client (VS Code).
-
-![Thunder Client (VS Code)](vscode.png "Thunder Client (VS Code)")
+- **Bruno**: cliente de escritorio offline y Git-native; las colecciones se guardan como ficheros en el repositorio.
+- **Hoppscotch**: cliente en navegador, sin instalación; también se puede self-hostear.
+- **Postman**: si ya lo usas; ten en cuenta que el plan gratuito es de un solo usuario desde marzo de 2026.

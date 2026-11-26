@@ -164,8 +164,9 @@ mvn spring-boot:run
    - http://localhost:8080/api/almacenes/1/articulos
    - http://localhost:8080/api/almacenes/1/articulos/2/stock
 
-**Pruebas**: 
-* Realiza pruebas enviando peticiones HTTP con `curl` o con extensiones que faciliten este trabajo. Más detalles [aquí](doc/peticiones_REST.md).
+**Pruebas**:
+* **Recomendado:** abrir [`requests.http`](requests.http) en VS Code con la extensión **REST Client** y pulsar "Send Request".
+* También puedes usar `curl`: ejemplos en [`doc/peticiones_REST.md`](doc/peticiones_REST.md).
 
 ### EXTRA: SpringDoc OpenAPI (generador de documentación on-line OpenAPI/Swagger) [no es parte de Spring]
 
